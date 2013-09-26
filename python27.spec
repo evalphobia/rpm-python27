@@ -55,7 +55,7 @@
 %define version 2.7.5
 %define libvers 2.7
 #--end constants--
-%define release 1
+%define release 2
 %define __prefix /usr
 
 #  kludge to get around rpm <percent>define weirdness
@@ -105,6 +105,7 @@ Mac.
 Summary: The libraries and header files needed for Python extension development.
 Requires: %{name} = %{version}-%{release}
 Group: Development/Libraries
+AutoReq: no
 
 %description devel
 The Python programming language's interpreter can be extended with
@@ -158,6 +159,10 @@ formats.
 %endif
 
 %changelog
+* Thu Sep 26 2013 evalphobia <evalphobia@gmail.com> [2.7.5-2]
+- Omitting a python27-devel package requirement.(python(abi)=2.7)
+- Fixing a python27-devel package confliction by yum.
+
 * Fri Jun 28 2012 Nathan Milford <nathan@milford.io> [2.7.5-1]
 - Updated to 2.7.5.
 
@@ -371,7 +376,35 @@ rm -f mainpkg.files tools.files
 
 %attr(755,root,root) %dir %{__prefix}/include/python%{libvers}
 %attr(755,root,root) %dir %{__prefix}/lib/python%{libvers}/
-%attr(755,root,root) %dir %{__prefix}/%{libdirname}/python%{libvers}/
+%attr(755,root,root) %dir %{__prefix}/%{libdirname}/python%{libvers}/*.py*
+%attr(755,root,root) %dir %{__prefix}/%{libdirname}/python%{libvers}/LICENSE.txt
+%attr(755,root,root) %dir %{__prefix}/%{libdirname}/python%{libvers}/pdb.doc
+%attr(755,root,root) %dir %{__prefix}/%{libdirname}/python%{libvers}/wsgiref.egg-info
+%attr(755,root,root) %dir %{__prefix}/%{libdirname}/python%{libvers}/bsddb/
+%attr(755,root,root) %dir %{__prefix}/%{libdirname}/python%{libvers}/compiler/
+%attr(755,root,root) %dir %{__prefix}/%{libdirname}/python%{libvers}/ctypes/
+%attr(755,root,root) %dir %{__prefix}/%{libdirname}/python%{libvers}/curses/
+%attr(755,root,root) %dir %{__prefix}/%{libdirname}/python%{libvers}/distutils/
+%attr(755,root,root) %dir %{__prefix}/%{libdirname}/python%{libvers}/email/
+%attr(755,root,root) %dir %{__prefix}/%{libdirname}/python%{libvers}/encodings/
+%attr(755,root,root) %dir %{__prefix}/%{libdirname}/python%{libvers}/hotshot/
+%attr(755,root,root) %dir %{__prefix}/%{libdirname}/python%{libvers}/idlelib/
+%attr(755,root,root) %dir %{__prefix}/%{libdirname}/python%{libvers}/importlib/
+%attr(755,root,root) %dir %{__prefix}/%{libdirname}/python%{libvers}/json/
+%attr(755,root,root) %dir %{__prefix}/%{libdirname}/python%{libvers}/lib2to3/
+%attr(755,root,root) %dir %{__prefix}/%{libdirname}/python%{libvers}/lib-dynload/
+%attr(755,root,root) %dir %{__prefix}/%{libdirname}/python%{libvers}/lib-tk/
+%attr(755,root,root) %dir %{__prefix}/%{libdirname}/python%{libvers}/logging/
+%attr(755,root,root) %dir %{__prefix}/%{libdirname}/python%{libvers}/multiprocessing/
+%attr(755,root,root) %dir %{__prefix}/%{libdirname}/python%{libvers}/plat-linux2/
+%attr(755,root,root) %dir %{__prefix}/%{libdirname}/python%{libvers}/pydoc_data/
+%attr(755,root,root) %dir %{__prefix}/%{libdirname}/python%{libvers}/site-packages/
+%attr(755,root,root) %dir %{__prefix}/%{libdirname}/python%{libvers}/sqlite3/
+%attr(755,root,root) %dir %{__prefix}/%{libdirname}/python%{libvers}/test/
+%attr(755,root,root) %dir %{__prefix}/%{libdirname}/python%{libvers}/unittest/
+%attr(755,root,root) %dir %{__prefix}/%{libdirname}/python%{libvers}/wsgiref/
+%attr(755,root,root) %dir %{__prefix}/%{libdirname}/python%{libvers}/xml/
+%attr(755,root,root) %dir %{__prefix}/%{libdirname}/python%{libvers}/config/Makefile
 
 %if %{include_sharedlib}
 %{__prefix}/%{libdirname}/libpython*
