@@ -14,3 +14,12 @@ To Build:
 `wget http://www.python.org/ftp/python/2.7.5/Python-2.7.5.tar.bz2 -O ~/rpmbuild/SOURCES/Python-2.7.5.tar.bz2`
 
 `QA_RPATHS=$[ 0x0001|0x0010 ] rpmbuild -bb ~/rpmbuild/SPECS/python27.spec`
+
+===
+
+## Changes from original
+(Sep 26,2013)
+
+- solved yum installation problem.
+- added spec file for setuptools.
+ 
